@@ -134,7 +134,8 @@ i::before {
   flex: 1;
 }
 
-.todo button {
+.todo .todo__check,
+.todo__remove {
   display: block;
   font-size: 1rem;
   padding: 0.5rem;
@@ -192,10 +193,19 @@ button > i {
 }
 .edit-text {
   color: var(--color-secondary-900);
+  background-color: var(--color-secondary-100);
   font-size: 14px;
+  padding: 0 10px;
+  border-radius: 6px;
   font-weight: 400;
-  padding-left: 8px;
+  margin: 0 10px;
   cursor: pointer;
+}
+.edit-text:hover {
+  color: var(--color-secondary-900);
+  background-color: var(--color-secondary-200);
+  font-size: 15px;
+  transition: all 0.3s ease-in-out;
 }
 /* backdrop */
 

@@ -105,20 +105,34 @@ function checkTodo(e) {
   filterTodos();
 }
 
+// function editTodo(e) {
+//   let todos = getAllTodos();
+//   const todoId = Number(e.target.dataset.todoId);
+//   const todo = todos.find((t) => t.id == todoId);
+//   submitEditForm.addEventListener("submit", (e) => {
+//     e.preventDefault();
+//     backdrop.classList.add("hidden");
+//     todo.title = todoEditInput.value;
+//   });
+//   saveAllTodos(todos);
+//   filterTodos();
+// }
 function editTodo(e) {
   let todos = getAllTodos();
   const todoId = Number(e.target.dataset.todoId);
   const todo = todos.find((t) => t.id == todoId);
+  console.log("todo :", todo);
+  todoEditInput.value = todo.title;
   submitEditForm.addEventListener("submit", (e) => {
     e.preventDefault();
     backdrop.classList.add("hidden");
+    todo.title = todoEditInput.value; // chetor meghdar input ro inja gharar bedam??;
+    console.log(" todo title: ", todo.title);
+    saveAllTodos(todos);
+    filterTodos();
     return todoEditInput.value;
   });
-  todo.title = todoEditInput.value; // chetor meghdar input ro inja gharar bedam??;
-  saveAllTodos(todos);
-  filterTodos();
 }
-
 
 function modal() {
   // modal show/hide
