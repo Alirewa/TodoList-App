@@ -1,13 +1,13 @@
 let filterValue = "all";
 
 // selecting:
-const todoForm = document.querySelector(".todo-form");
-const todoInput = document.querySelector(".todo-input");
-const todoEditInput = document.querySelector(".edit-todo-input");
-const todoList = document.querySelector(".todolist");
-const selectFilter = document.querySelector(".filter-todos");
-const submitEditForm = document.querySelector("#submit-edit-form");
-const backdrop = document.querySelector(".backdrop");
+const todoForm = document.querySelector(".todo__form");
+const todoInput = document.querySelector(".todo__form-input");
+const todoEditInput = document.querySelector(".todo__form-title-input");
+const todoList = document.querySelector(".todo__list-items");
+const selectFilter = document.querySelector(".todo__form-filter");
+const submitEditForm = document.querySelector("#todo__form-submit");
+const backdrop = document.querySelector(".todo__modal-backdrop");
 
 // events:
 document.addEventListener("DOMContentLoaded", (e) => {
@@ -43,7 +43,7 @@ function createTodos(todos) {
             <p class="todo__title">${todo.title} </p>
             <span class="todo__createdAt">${new Date(
               todo.createdat
-            ).toLocaleDateString("fa-ir")}</span>
+            ).toLocaleDateString("en-us")}</span>
             <button data-todo-id= ${
               todo.id
             } class="edit-text open-modal">edit</button>
@@ -67,6 +67,7 @@ function createTodos(todos) {
   editBtns.forEach((btn) => btn.addEventListener("click", editTodo));
   modal();
 }
+
 function filterTodos() {
   const todos = getAllTodos();
   switch (filterValue) {
@@ -105,29 +106,15 @@ function checkTodo(e) {
   filterTodos();
 }
 
-// function editTodo(e) {
-//   let todos = getAllTodos();
-//   const todoId = Number(e.target.dataset.todoId);
-//   const todo = todos.find((t) => t.id == todoId);
-//   submitEditForm.addEventListener("submit", (e) => {
-//     e.preventDefault();
-//     backdrop.classList.add("hidden");
-//     todo.title = todoEditInput.value;
-//   });
-//   saveAllTodos(todos);
-//   filterTodos();
-// }
 function editTodo(e) {
   let todos = getAllTodos();
   const todoId = Number(e.target.dataset.todoId);
   const todo = todos.find((t) => t.id == todoId);
-  console.log("todo :", todo);
   todoEditInput.value = todo.title;
   submitEditForm.addEventListener("submit", (e) => {
     e.preventDefault();
     backdrop.classList.add("hidden");
     todo.title = todoEditInput.value; // chetor meghdar input ro inja gharar bedam??;
-    console.log(" todo title: ", todo.title);
     saveAllTodos(todos);
     filterTodos();
     return todoEditInput.value;
@@ -138,7 +125,7 @@ function modal() {
   // modal show/hide
   const openModalBtn = [...document.querySelectorAll(".open-modal")];
   const closeModalBtn = document.querySelectorAll(".modal__close");
-  const modal = document.querySelector(".modal");
+  const modal = document.querySelector(".todo__modal-container");
   closeModalBtn.forEach((e) => {
     e.addEventListener("click", closeModal);
   });

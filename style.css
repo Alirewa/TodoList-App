@@ -4,7 +4,7 @@
   box-sizing: border-box;
   list-style-type: none;
   text-decoration: none;
-  font-family: "iranyekan";
+  font-family: "Roberto";
 }
 
 /*  VARIABLES : */
@@ -74,13 +74,13 @@ header {
   flex-grow: 1;
 }
 
-.form-container {
+.todo__div-inline {
   display: flex;
 }
-.todo-container {
-  margin-top: 2rem;
+.todo__list-container {
+  margin-top: 1rem;
 }
-.todo-form {
+.todo__form {
   width: 30rem;
   background-color: var(--color-secondary-0);
   border-radius: 0.5rem;
@@ -89,13 +89,13 @@ header {
   border: 2px solid none;
   overflow: hidden;
 }
-.todo-form input {
+.todo__form input {
   flex: 1;
   font-weight: bold;
 }
 
-.todo-form input,
-.todo-form button {
+.todo__form input,
+.todo__form button {
   border: none;
   outline: none;
   background-color: none;
@@ -109,13 +109,13 @@ button i {
 i::before {
   padding: 5px;
 }
-.todo-form button {
+.todo__form button {
   color: var(--color-primary-900);
   background-color: var(--color-primary-50);
   cursor: pointer;
   transition: all 0.3s ease-in-out;
 }
-.todo-form button:hover {
+.todo__form button:hover {
   background-color: var(--color-primary-100);
 }
 .todo {
@@ -163,7 +163,7 @@ select {
   color: var(--color-secondary-900);
 }
 
-.select {
+.todo__form-select {
   margin-left: 1rem;
   background-color: #fff;
   cursor: pointer;
@@ -174,7 +174,7 @@ select {
   border-radius: 0.5rem;
   overflow: hidden;
 }
-.select::after {
+.todo__form-select::after {
   content: "\25BC";
   position: absolute;
   top: 0;
@@ -204,12 +204,12 @@ button > i {
 .edit-text:hover {
   color: var(--color-secondary-900);
   background-color: var(--color-secondary-200);
-  font-size: 15px;
+  font-size: 13px;
   transition: all 0.3s ease-in-out;
 }
 /* backdrop */
 
-.backdrop {
+.todo__modal-backdrop {
   position: fixed;
   inset: 0;
   width: 100%;
@@ -219,7 +219,7 @@ button > i {
   z-index: 10;
 }
 
-.modal {
+.todo__modal-container {
   position: fixed;
   top: 50%;
   left: 50%;
@@ -291,7 +291,7 @@ hr {
   font-size: large;
   font-weight: bold;
 }
-.container-form .modal-form {
+.todo__modal-form .todo__form {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -299,13 +299,13 @@ hr {
   gap: 10px;
   margin: 12px 0;
 }
-.input-data {
+.todo__form-input-data {
   display: flex;
   flex-direction: column;
   gap: 5px;
   width: 100%;
 }
-.input-data input {
+.todo__form-input-data input {
   display: flex;
   flex-direction: column;
   gap: 5px;
@@ -318,35 +318,34 @@ hr {
   border: 1px solid var(--color-secondary-200);
   border-radius: var(--border-radius-md);
 }
-.input-data label {
+.todo__form-input-data label {
   pointer-events: none;
   bottom: 10px;
   font-size: 14px;
   transition: all 0.3s ease;
 }
-.btn-flex {
+.todo__form-btn-list {
   justify-content: center;
   display: flex;
   flex-direction: row;
   gap: 10px;
 }
-.btn-flex input {
+.todo__form-btn-list input {
   width: 100%;
 }
-.edit-form {
+.todo__form {
   display: flex;
-  flex-direction: column;
   gap: 20px;
 }
 @media (max-width: 700px) {
-  .container-form .modal-form {
+  .todo__modal-form .modal-form {
     display: block;
   }
-  .btn-flex {
+  .todo__form-btn-list {
     display: flex;
     gap: 10px;
   }
-  .submit-btn .input-data {
+  .submit-btn .todo__form-input-data {
     width: 40% !important;
   }
 }

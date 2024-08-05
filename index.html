@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TodoApp</title>
+    <title>TodoApp v1.0</title>
     <link rel="stylesheet" href="./style.css" />
     <link
       rel="stylesheet"
@@ -17,38 +17,35 @@
 
   <body>
     <header>
-      <h1>TodoList v1.0</h1>
+      <h1>TodoApp v1.0</h1>
     </header>
     <section class="container">
-      <div class="form-container">
-        <form class="todo-form">
-          <input type="text" class="todo-input" />
-          <button class="add-todo" type="submit">
-            <i class="fas fa-plus-circle">Add</i>
+      <div class="todo__div-inline">
+        <form class="todo__form">
+          <input type="text" class="todo__form-input" />
+          <button type="submit">
+            <i class="fas fa-plus-square">Add</i>
           </button>
         </form>
-        <div class="select">
-          <select class="filter-todos" name="todos">
+        <div class="todo__form-select">
+          <select class="todo__form-filter" name="todos">
             <option value="all">All</option>
             <option value="completed">Completed</option>
             <option value="uncompleted">Uncompleted</option>
           </select>
         </div>
       </div>
-      <div class="todo-container">
-        <ul class="todolist">
-          <!-- <li class="todo">
-            <p class="todo__title">todo #1 <span class="edit-text" id="open-modal">edit</span></p>
-            <span class="todo__createdAt">1402/1/28</span>
-            <button><i class="todo__check far fa-check-square"></i></button>
-            <button><i class="todo__remove far fa-trash-alt"></i></button>
-          </li> -->
+      <div class="todo__list-container">
+        <ul class="todo__list-items">
+          <!-- JAVASCRIPT -->
         </ul>
       </div>
-      <div class="backdrop hidden">
-        <div class="modal">
+
+      <!-- MODAL HTML -->
+      <div class="todo__modal-backdrop hidden">
+        <div class="todo__modal-container">
           <div class="modal__header">
-            <p class="modal__title">Edit Modal</p>
+            <p class="modal__title">Edit Todo</p>
             <button type="button" class="modal__close btn btn__close">
               ❌
             </button>
@@ -56,18 +53,18 @@
 
           <hr />
 
-          <div class="container-form">
-            <form class="edit-form" id="submit-edit-form" action="#">
-              <div class="input-data">
-                <label for="name">Edit Todo Title</label>
+          <div class="todo__modal-form">
+            <form class="todo__form" id="todo__form-submit" action="#">
+              <div class="todo__form-input-data">
+                <label>Edit Todo Title</label>
                 <input
                   type="text"
-                  class="edit-todo-input"
+                  class="todo__form-title-input"
                   name="title"
                   value=""
                 />
               </div>
-              <div class="btn-flex">
+              <div class="todo__form-btn-list">
                 <input class="btn btn__primary" type="submit" value="Submit" />
                 <input
                   class="modal__close btn__secendery"
