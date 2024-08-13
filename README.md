@@ -1,6 +1,6 @@
 # TodoList-With-Edit
 
-TodoApp v1.0 with Html/Css/Javascript
+TodoApp v1.0 with Html/Css/Javascript <hr>
 demo: https://alirewa.github.io/TodoList-With-Edit/
 Futures:
 - Add Todo
