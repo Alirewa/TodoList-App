@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="لیست کارها - مدیریت هوشمند وظایف روزانه" />
+    <title>Todo List App — Persian RTL Task Manager | لیست کارها</title>
+    <meta name="description" content="A modern Persian todo list app with dark glassmorphism UI, full RTL support, Shamsi dates, and localStorage persistence. Built with Vanilla JavaScript." />
+    <meta name="keywords" content="todo list, persian todo, farsi todo app, RTL task manager, glassmorphism, vanilla javascript, لیست کارها, برنامه وظایف فارسی" />
+    <meta name="author" content="Alirewa" />
+    <meta property="og:title" content="Todo List App — Persian RTL Task Manager" />
+    <meta property="og:description" content="Modern dark glassmorphism todo app with full Persian RTL support, Shamsi calendar dates, and smooth animations." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://alirewa.github.io/TodoList-App" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Todo List App — Persian RTL Task Manager" />
+    <meta name="twitter:description" content="Modern dark glassmorphism todo app with full Persian RTL support and Shamsi calendar." />
+    <meta name="theme-color" content="#14b8a6" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <!-- Decorative background blobs -->
+    <div class="blobs" aria-hidden="true">
+      <div class="blob blob--1"></div>
+      <div class="blob blob--2"></div>
+      <div class="blob blob--3"></div>
+    </div>
+
+    <main class="app">
+      <!-- App Header -->
+      <header class="app-header">
+        <div class="app-icon" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="18" height="18" rx="4" ry="4"/>
+            <polyline points="7.5 12 10.5 15 16.5 9"/>
+          </svg>
+        </div>
+        <h1 class="app-title">لیست کارها</h1>
+        <p class="app-subtitle">مدیریت هوشمند کارهای روزانه</p>
+      </header>
+
+      <!-- Main Card -->
+      <div class="card">
+
+        <!-- Add Task Form -->
+        <form class="add-form" id="addForm" novalidate>
+          <input
+            type="text"
+            class="add-input"
+            id="addInput"
+            placeholder="وظیفه‌ی جدید اضافه کن..."
+            autocomplete="off"
+            maxlength="200"
+            aria-label="عنوان وظیفه جدید"
+          />
+          <button type="submit" class="add-btn" aria-label="افزودن وظیفه">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="12" y1="5" x2="12" y2="19"/>
+              <line x1="5" y1="12" x2="19" y2="12"/>
+            </svg>
+          </button>
+        </form>
+
+        <!-- Stats Bar -->
+        <div class="stats" id="stats" aria-label="آمار وظایف">
+          <div class="stat">
+            <span class="stat-num" id="totalCount">۰</span>
+            <span class="stat-label">کل</span>
+          </div>
+          <div class="stat-divider" aria-hidden="true"></div>
+          <div class="stat">
+            <span class="stat-num stat-num--done" id="doneCount">۰</span>
+            <span class="stat-label">انجام‌شده</span>
+          </div>
+          <div class="stat-divider" aria-hidden="true"></div>
+          <div class="stat">
+            <span class="stat-num stat-num--left" id="leftCount">۰</span>
+            <span class="stat-label">باقی‌مانده</span>
+          </div>
+        </div>
+
+        <!-- Filter Tabs -->
+        <div class="filter-tabs" role="tablist" aria-label="فیلتر وظایف">
+          <button class="filter-tab active" data-filter="all" role="tab" aria-selected="true">همه</button>
+          <button class="filter-tab" data-filter="uncompleted" role="tab" aria-selected="false">باقی‌مانده</button>
+          <button class="filter-tab" data-filter="completed" role="tab" aria-selected="false">انجام‌شده</button>
+        </div>
+
+        <!-- Todo List -->
+        <ul class="todo-list" id="todoList" role="list" aria-label="لیست وظایف" aria-live="polite"></ul>
+
+        <!-- Empty State -->
+        <div class="empty-state hidden" id="emptyState">
+          <div class="empty-icon" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+              <line x1="9" y1="13" x2="15" y2="13"/>
+              <line x1="9" y1="17" x2="11" y2="17"/>
+            </svg>
+          </div>
+          <p class="empty-title" id="emptyTitle">هنوز وظیفه‌ای نداری</p>
+          <p class="empty-hint" id="emptyHint">اولین وظیفه‌ات رو اضافه کن!</p>
+        </div>
+
+      </div>
+    </main>
+
+    <!-- Edit Modal -->
+    <div class="modal-backdrop hidden" id="modalBackdrop" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal">
+        <div class="modal-header">
+          <h2 class="modal-title" id="modalTitle">ویرایش وظیفه</h2>
+          <button class="modal-close" id="modalClose" aria-label="بستن">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="18" y1="6" x2="6" y2="18"/>
+              <line x1="6" y1="6" x2="18" y2="18"/>
+            </svg>
+          </button>
+        </div>
+        <form class="modal-form" id="editForm" novalidate>
+          <div class="form-group">
+            <label class="form-label" for="editInput">عنوان وظیفه</label>
+            <input
+              type="text"
+              class="form-input"
+              id="editInput"
+              autocomplete="off"
+              maxlength="200"
+            />
+          </div>
+          <div class="modal-actions">
+            <button type="submit" class="btn btn--primary">ذخیره تغییرات</button>
+            <button type="button" class="btn btn--secondary" id="modalCancel">انصراف</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script src="./todolist.js"></script>
+  </body>
+</html>
